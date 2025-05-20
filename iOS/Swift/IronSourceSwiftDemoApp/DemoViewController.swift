@@ -9,13 +9,14 @@ import UIKit
 import Foundation
 import ObjectiveC.runtime
 import IronSource
+import HyprMX
 
 // Replace with your app key as available in the LevelPlay dashboard
-let appKey = "8545d445"
+let appKey = "220d4dff5"
 
 // Replace with your ad unit ids as available in the LevelPlay dashboard
-let interstitialAdUnitId = "wmgt0712uuux8ju4"
-let bannerAdUnitId = "iep3rxsyp9na3rw8"
+let interstitialAdUnitId = "i4o5uy2ttn4aqmta"
+let bannerAdUnitId = "cmkviax96a7f3k7m"
 
 enum ButtonIdentifiers : Int {
     case showRewardedVideoButtonIdentifier
@@ -93,6 +94,10 @@ class DemoViewController: UIViewController, DemoViewControllerDelegate {
         // Remove it before going live!
         ISIntegrationHelper.validateIntegration()
 #endif
+        IronSource.setMetaDataWithKey("is_test_suite", value: "enable")
+        
+        IronSource.setConsent(true)
+        IronSource.setMetaDataWithKey("HyprMX_ageRestricted", value: "YES")
         
         // Before initializing any of our products (Rewarded video, Interstitial or Banner) you must set
         // their delegates. Take a look at each of these delegates method and you will see that they each implement a product
@@ -122,8 +127,12 @@ class DemoViewController: UIViewController, DemoViewControllerDelegate {
                 return
             }
             self.logMethodName(string: "sdk initialization succeeded")
-            self.createInterstititalAd()
-            self.createBannerAd()
+            
+            print("HyprMX.sessionToken() returns \(HyprMX.sessionToken())")
+            
+            IronSource.launchTestSuite(self)
+//            self.createInterstititalAd()
+//            self.createBannerAd()
         }
         
         // Scroll down the file to find out what happens when you tap a button...
