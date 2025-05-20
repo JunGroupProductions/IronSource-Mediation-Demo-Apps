@@ -1,4 +1,4 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 platform :ios, '13.0'
 
 target 'IronSourceSwiftDemoApp' do
@@ -7,5 +7,5 @@ target 'IronSourceSwiftDemoApp' do
 
     pod 'IronSourceSDK' 
   # Pods for IronSourceSwiftDemoApp
-
+    pod 'IronSourceHyprMXAdapter','4.3.10.0'
 end
