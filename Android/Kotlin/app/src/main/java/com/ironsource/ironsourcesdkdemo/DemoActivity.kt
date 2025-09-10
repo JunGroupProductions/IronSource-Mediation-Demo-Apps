@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.multidex.BuildConfig
+import com.hyprmx.android.sdk.utility.HyprMXLog
 import com.ironsource.mediationsdk.IronSource
 import com.ironsource.mediationsdk.integration.IntegrationHelper
 import com.ironsource.mediationsdk.model.Placement
@@ -61,7 +62,7 @@ class DemoActivity : Activity(), DemoActivityListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo)
-
+        HyprMXLog.enableDebugLogs(true)
         setupUI()
         setupIronSourceSdk()
     }
